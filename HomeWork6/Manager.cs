@@ -26,12 +26,12 @@ internal class Manager: EmployeeBase
         string projectName = Console.ReadLine();
 
         Console.WriteLine("Input project Deadline");
-        int deadline = Parsing();
+        string deadline = Console.ReadLine();
 
         _project = new Project(projectName, deadline);
     }
 
-    public Manager(string name, int yearsOfExp, int salary, string projectName, int deadline) 
+    public Manager(string name, int yearsOfExp, int salary, string projectName, string deadline) 
     {
         Name = name;
         Position = "Manager";
@@ -51,9 +51,9 @@ internal class Manager: EmployeeBase
     {
         public string ProjectName { get; set; }
 
-        public int Deadline { get; set; }
+        public string Deadline { get; set; }
 
-        public  Project(string name, int deadline) 
+        public  Project(string name, string deadline) 
         {
             ProjectName = name;
             Deadline = deadline;
@@ -61,7 +61,7 @@ internal class Manager: EmployeeBase
 
         public void DisplayProjectInfo() 
         {
-            Console.WriteLine($" Project name: {ProjectName} Deadline: {Deadline} days");
+            Console.WriteLine($" Project name: {ProjectName} Deadline: {Deadline}");
         }
     }
 
@@ -76,7 +76,7 @@ internal class Manager: EmployeeBase
             }
             else
             {
-                Console.WriteLine("Incorrect input\n");
+                Console.WriteLine("Incorrect input");
                 Console.WriteLine("Please, Repeat input");
             }
         } while (true);

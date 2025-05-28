@@ -1,30 +1,25 @@
 ﻿namespace HomeWork6;
 
-internal class EmployeeRegistry
+internal static class EmployeeRegistry
 {
-    List<EmployeeBase> EmployeeList { get; set; }
+    private static List<EmployeeBase> _employeeList = new List<EmployeeBase>();
 
-    public EmployeeRegistry() 
+    public static void AddEmployee(EmployeeBase employee) 
     {
-        EmployeeList = new List<EmployeeBase>();
+        _employeeList.Add(employee);
     }
 
-    public void AddEmployee(EmployeeBase employee) 
+    public static void ListAllEmployees() 
     {
-        EmployeeList.Add(employee);
-    }
-
-    public void ListAllEmployees() 
-    {
-        foreach (EmployeeBase employee in EmployeeList) 
+        foreach (EmployeeBase employee in _employeeList) 
         {
             employee.GetDetails();
         }
     }
 
-    public void FindEmployee(string name) 
+    public static void FindEmployee(string name) 
     {
-        foreach (EmployeeBase employee in EmployeeList) 
+        foreach (EmployeeBase employee in _employeeList) 
         {
             if (employee.Name.ToLower().Trim() == name.ToLower().Trim()) 
             {

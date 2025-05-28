@@ -4,7 +4,7 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        EmployeeRegistry employeeRegistry = Initiate();
+        Initiate();
 
         bool loop = true;
 
@@ -23,20 +23,20 @@ internal class Program
                 case "1": 
                     {
                         Console.Clear();
-                        NewEmployee(employeeRegistry);
+                        NewEmployee();
                         break;
                     }
                 case "2":
                     {
                         Console.Clear();
-                        employeeRegistry.ListAllEmployees();
+                        EmployeeRegistry.ListAllEmployees();
                         break;
                     }
                 case "3": 
                     {
                         Console.Clear();
                         Console.WriteLine("Enter employee name");
-                        employeeRegistry.FindEmployee(Console.ReadLine());
+                        EmployeeRegistry.FindEmployee(Console.ReadLine());
                         break;
                     }
                 case "4": 
@@ -58,26 +58,22 @@ internal class Program
     }
 
 
-    public static EmployeeRegistry Initiate() 
+    public static void Initiate() 
     {
-        EmployeeBase employee1 = new Manager("Alice", 10, 50000, "Workshop", 30);
-        EmployeeBase employee2 = new Manager("Kira", 8, 45000, "Database", 70);
+        EmployeeBase employee1 = new Manager("Alice", 10, 50000, "Workshop", "March");
+        EmployeeBase employee2 = new Manager("Kira", 8, 45000, "Database", "May");
         EmployeeBase employee3 = new Worker("Alex", "Economist", "Minsk", 20000);
         EmployeeBase employee4 = new Worker("Max", "Coder", "Grodno", 35000);
         EmployeeBase employee5 = new Worker("Carlos", "Tester", "Brest", 30000);
 
-        EmployeeRegistry employeeRegistry = new EmployeeRegistry();
-
-        employeeRegistry.AddEmployee(employee1);
-        employeeRegistry.AddEmployee(employee2);
-        employeeRegistry.AddEmployee(employee3);
-        employeeRegistry.AddEmployee(employee4);
-        employeeRegistry.AddEmployee(employee5);
-
-        return employeeRegistry;
+        EmployeeRegistry.AddEmployee(employee1);
+        EmployeeRegistry.AddEmployee(employee2);
+        EmployeeRegistry.AddEmployee(employee3);
+        EmployeeRegistry.AddEmployee(employee4);
+        EmployeeRegistry.AddEmployee(employee5);
     }
 
-    public static EmployeeRegistry NewEmployee(EmployeeRegistry employeeRegistry) 
+    public static void NewEmployee() 
     {
         Console.WriteLine("Press 1 to add Manager");
         Console.WriteLine("Press 2 to add Worker");
@@ -87,13 +83,13 @@ internal class Program
             case "1":
                 {
                     Manager manager = new Manager();
-                    employeeRegistry.AddEmployee(manager);
+                    EmployeeRegistry.AddEmployee(manager);
                     break;
                 }
             case "2":
                 {
                     Worker worker = new Worker();
-                    employeeRegistry.AddEmployee(worker);
+                    EmployeeRegistry.AddEmployee(worker);
                     break;
                 }
             default:
@@ -102,7 +98,5 @@ internal class Program
                     break;
                 }
         }
-
-        return employeeRegistry;
     }
 }
